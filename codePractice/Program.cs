@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections;
+using System.Linq;
 
 namespace codePractice
 {
@@ -126,6 +127,23 @@ namespace codePractice
 
             return result;
         }
+
+        public string LongestCommonPrefix(string[] strs)
+        {
+            if (strs.Length == 0)
+                return "";
+            string prefix = strs[0];
+            for (int i = 0; i < strs.Length; i++)
+            {
+                while (strs[i].IndexOf(prefix)!=0)
+                {
+                    prefix = prefix.Substring(0, prefix.Length -1 );
+                    if (prefix == string.Empty)
+                        return "";
+                }
+            }
+            return prefix;
+        }
     }
 
     class Program
@@ -135,8 +153,8 @@ namespace codePractice
 
             EulerAlgorithims algorithim = new EulerAlgorithims();
 
-            int[] nums = { 2, 111, 22 };
-            Console.WriteLine( algorithim.RomanToInt("MCMXCIV"));
+            string[] strings = {"leets","leetcode", "leets", "leeds"};
+            Console.WriteLine( algorithim.LongestCommonPrefix(strings));
 
         }
     }
