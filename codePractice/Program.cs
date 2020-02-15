@@ -172,6 +172,7 @@ namespace codePractice
                 {
                     //if it was an opening bracket push to the stack
                     stack.Push(c); 
+
                 }
 
             }
