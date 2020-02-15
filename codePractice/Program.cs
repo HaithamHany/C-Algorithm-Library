@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
+using System.Text;
 
 namespace codePractice
 {
@@ -144,6 +145,40 @@ namespace codePractice
             }
             return prefix;
         }
+
+        public bool IsValid(string s)
+        {
+            Stack<Char> stack = new Stack<char>();
+            Dictionary<char, char> charactersMapping = new Dictionary<char, char>();
+            charactersMapping.Add( ')', '(');
+            charactersMapping.Add( '}', '{');
+            charactersMapping.Add( ']', '[');
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                char c = s[i];
+
+                // if the current character is a closing bracket
+                if (charactersMapping.ContainsKey(c))
+                {
+                    //get the top element of the stack. if stack is empty set dummy value
+                    char topElement = (stack.Count == 0) ? '#' : stack.Pop();
+
+                    // if the mapping for this bracket doesn't match the stack's top elemnt. return false
+                    if (topElement != charactersMapping[c])
+                        return false;
+                }
+                else
+                {
+                    //if it was an opening bracket push to the stack
+                    stack.Push(c); 
+                }
+
+            }
+
+
+            return (stack.Count == 0);
+        }
     }
 
     class Program
@@ -154,8 +189,7 @@ namespace codePractice
             EulerAlgorithims algorithim = new EulerAlgorithims();
 
             string[] strings = {"leets","leetcode", "leets", "leeds"};
-            Console.WriteLine( algorithim.LongestCommonPrefix(strings));
-
+            Console.WriteLine(algorithim.IsValid("(((((())))))"));      
         }
     }
 }
