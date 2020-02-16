@@ -50,9 +50,5 @@ namespace codePractice.DataStructure
             }
         }
   
-        //public ListNode MergeTwoLists(ListNode l1, ListNode l2)
-        //{
-
-        //}
     }
 }

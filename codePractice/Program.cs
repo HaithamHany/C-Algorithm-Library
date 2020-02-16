@@ -4,6 +4,7 @@ using System.Collections;
 using System.Linq;
 using System.Text;
 using codePractice.DataStructure;
+using codePractice.Helpers;
 
 namespace codePractice
 {
@@ -181,6 +182,32 @@ namespace codePractice
 
             return (stack.Count == 0);
         }
+
+        public ListNode<int> MergeTwoLists(ListNode<int> l1, ListNode<int> l2)
+        {
+            ListNode<int> currPtr = l1;
+
+            try
+            {
+                while (currPtr.next != null)
+                {
+                    currPtr = currPtr.next;
+                }
+                currPtr.next = l2;
+            }
+            catch (Exception ex) { }
+
+
+
+            if (l1 != null)
+            {
+                l1.Sort();
+                currPtr = l1;
+            }
+            else
+                currPtr = l2;
+            return currPtr;
+        }
     }
 
     class Program
@@ -190,18 +217,19 @@ namespace codePractice
 
             EulerAlgorithims algorithim = new EulerAlgorithims();
 
-            DataStructure.LinkedList<int> list1 = new DataStructure.LinkedList<int>(14);
+            ListNode<int> l1Node3 = new ListNode<int>(4);
+            ListNode<int> l1Node2 = new ListNode<int>(2);
+            l1Node2.next = l1Node3;
+            ListNode<int> l1Node1 = new ListNode<int>(0);
+            l1Node1.next = l1Node2;
 
-            list1.Add(10);
-            list1.Add(2);
-            list1.Add(8);
+            ListNode<int> l2Node3 = new ListNode<int>(4);
+            ListNode<int> l2Node2 = new ListNode<int>(3);
+            l2Node2.next = l2Node3;
+            ListNode<int> l2Node1 = new ListNode<int>(1);
+            l2Node1.next = l2Node2;
 
-            list1.PrintConsole();
-
-            Console.WriteLine("after sorting");
-
-            list1.Sort();
-            list1.PrintConsole();
+            algorithim.MergeTwoLists(null, null);
         }
     }
 }
