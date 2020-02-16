@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 using System.Text;
+using codePractice.DataStructure;
 
 namespace codePractice
 {
@@ -189,8 +190,18 @@ namespace codePractice
 
             EulerAlgorithims algorithim = new EulerAlgorithims();
 
-            string[] strings = {"leets","leetcode", "leets", "leeds"};
-            Console.WriteLine(algorithim.IsValid("(((((())))))"));      
+            DataStructure.LinkedList<int> list1 = new DataStructure.LinkedList<int>(14);
+
+            list1.Add(10);
+            list1.Add(2);
+            list1.Add(8);
+
+            list1.PrintConsole();
+
+            Console.WriteLine("after sorting");
+
+            list1.Sort();
+            list1.PrintConsole();
         }
     }
 }
