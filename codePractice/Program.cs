@@ -208,7 +208,24 @@ namespace codePractice
                 currPtr = l2;
             return currPtr;
         }
-    }
+
+        public int RemoveDuplicates(int[] nums)
+        {
+            if (nums.Length == 0)
+                return 0;
+            int i = 0;
+
+            for (int j = 1; j < nums.Length; j++)
+            {
+                if (nums[j] != nums[i])
+                {
+                    i++;
+                    nums[i] = nums[j];
+                }
+            }
+
+            return i + 1;
+        }
 
     class Program
     {
@@ -217,19 +234,28 @@ namespace codePractice
 
             EulerAlgorithims algorithim = new EulerAlgorithims();
 
-            ListNode<int> l1Node3 = new ListNode<int>(4);
-            ListNode<int> l1Node2 = new ListNode<int>(2);
-            l1Node2.next = l1Node3;
-            ListNode<int> l1Node1 = new ListNode<int>(0);
-            l1Node1.next = l1Node2;
+            //ListNode<int> l1Node3 = new ListNode<int>(4);
+            //ListNode<int> l1Node2 = new ListNode<int>(2);
+            //l1Node2.next = l1Node3;
+            //ListNode<int> l1Node1 = new ListNode<int>(0);
+            //l1Node1.next = l1Node2;
 
-            ListNode<int> l2Node3 = new ListNode<int>(4);
-            ListNode<int> l2Node2 = new ListNode<int>(3);
-            l2Node2.next = l2Node3;
-            ListNode<int> l2Node1 = new ListNode<int>(1);
-            l2Node1.next = l2Node2;
+            //ListNode<int> l2Node3 = new ListNode<int>(4);
+            //ListNode<int> l2Node2 = new ListNode<int>(3);
+            //l2Node2.next = l2Node3;
+            //ListNode<int> l2Node1 = new ListNode<int>(1);
+            //l2Node1.next = l2Node2;
 
-            algorithim.MergeTwoLists(null, null);
+            //algorithim.MergeTwoLists(null, null);
+
+            int[] arr = { 1, 1, 2 };
+            algorithim.RemoveDuplicates(arr);
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.WriteLine(arr[i]);
+            }
+
         }
     }
 }
