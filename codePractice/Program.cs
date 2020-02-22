@@ -250,6 +250,19 @@ namespace codePractice
             return j ;
         }
 
+        public int StrStr(string haystack, string needle)
+        {
+            if (needle == "")
+                return 0;
+
+            if (haystack.Contains(needle))
+            {
+                return haystack.IndexOf(needle);
+            }
+
+            return -1;
+        }
+
         class Program
         {
             static void Main(string[] args)
@@ -271,8 +284,8 @@ namespace codePractice
 
                 //algorithim.MergeTwoLists(null, null);
 
-                int[] arr = { 0,1,2,2,3,0,4,2 };
-                Console.WriteLine(algorithim.RemoveElement(arr, 2));
+                
+                Console.WriteLine(algorithim.StrStr("mississippi", "i"));
 
                 //Console.WriteLine(algorithim.RemoveDuplicates(arr));
             }
