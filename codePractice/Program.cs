@@ -263,6 +263,26 @@ namespace codePractice
             return -1;
         }
 
+        public int SearchInsert(int[] nums, int target)
+        {
+            int index = 0;
+
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if(nums[i] == target)
+                {
+                    return i;
+                }
+                else
+                {
+                    if (target > nums[i])
+                        index++;
+                }
+            }
+
+            return index;
+        }
+
         class Program
         {
             static void Main(string[] args)
@@ -284,8 +304,9 @@ namespace codePractice
 
                 //algorithim.MergeTwoLists(null, null);
 
-                
-                Console.WriteLine(algorithim.StrStr("mississippi", "i"));
+                int[] arr = { 1, 3, 5, 6 };
+
+                Console.WriteLine(algorithim.SearchInsert(arr, 0));
 
                 //Console.WriteLine(algorithim.RemoveDuplicates(arr));
             }
