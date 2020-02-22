@@ -32,7 +32,7 @@ namespace codePractice
             Dictionary<int, int> map = new Dictionary<int, int>();
             for (int i = 0; i < nums.Length; i++)
             {
-                if(!map.ContainsKey(nums[i]))
+                if (!map.ContainsKey(nums[i]))
                     map.Add(nums[i], i);
             }
 
@@ -53,9 +53,9 @@ namespace codePractice
             long num = x;
             long result = 0;
             num = Math.Abs(num);
-            while (num!=0)
+            while (num != 0)
             {
-                result = (result*10)+(num % 10);
+                result = (result * 10) + (num % 10);
 
                 num /= 10;
             }
@@ -63,7 +63,7 @@ namespace codePractice
             if (result > int.MaxValue)
                 return 0;
 
-            return (x < 0)? 0 - (int)result : (int) result ;
+            return (x < 0) ? 0 - (int)result : (int)result;
         }
 
         public bool IsPalindrome(int x)
@@ -138,9 +138,9 @@ namespace codePractice
             string prefix = strs[0];
             for (int i = 0; i < strs.Length; i++)
             {
-                while (strs[i].IndexOf(prefix)!=0)
+                while (strs[i].IndexOf(prefix) != 0)
                 {
-                    prefix = prefix.Substring(0, prefix.Length -1 );
+                    prefix = prefix.Substring(0, prefix.Length - 1);
                     if (prefix == string.Empty)
                         return "";
                 }
@@ -152,9 +152,9 @@ namespace codePractice
         {
             Stack<Char> stack = new Stack<char>();
             Dictionary<char, char> charactersMapping = new Dictionary<char, char>();
-            charactersMapping.Add( ')', '(');
-            charactersMapping.Add( '}', '{');
-            charactersMapping.Add( ']', '[');
+            charactersMapping.Add(')', '(');
+            charactersMapping.Add('}', '{');
+            charactersMapping.Add(']', '[');
 
             for (int i = 0; i < s.Length; i++)
             {
@@ -173,7 +173,7 @@ namespace codePractice
                 else
                 {
                     //if it was an opening bracket push to the stack
-                    stack.Push(c); 
+                    stack.Push(c);
 
                 }
 
@@ -227,35 +227,55 @@ namespace codePractice
             return i + 1;
         }
 
-    class Program
-    {
-        static void Main(string[] args)
+        public int RemoveElement(int[] nums, int val)
         {
+    
+            if (nums.Length == 0)
+                return 0;
 
-            EulerAlgorithims algorithim = new EulerAlgorithims();
-
-            //ListNode<int> l1Node3 = new ListNode<int>(4);
-            //ListNode<int> l1Node2 = new ListNode<int>(2);
-            //l1Node2.next = l1Node3;
-            //ListNode<int> l1Node1 = new ListNode<int>(0);
-            //l1Node1.next = l1Node2;
-
-            //ListNode<int> l2Node3 = new ListNode<int>(4);
-            //ListNode<int> l2Node2 = new ListNode<int>(3);
-            //l2Node2.next = l2Node3;
-            //ListNode<int> l2Node1 = new ListNode<int>(1);
-            //l2Node1.next = l2Node2;
-
-            //algorithim.MergeTwoLists(null, null);
-
-            int[] arr = { 1, 1, 2 };
-            algorithim.RemoveDuplicates(arr);
-
-            for (int i = 0; i < arr.Length; i++)
+            int j = 0;
+            int i = 0;
+                       
+            for ( i = 0; i < nums.Length; i++)
             {
-                Console.WriteLine(arr[i]);
+
+                if (nums[i] != val)
+                {
+                    nums[j] = nums[i];
+                    j++;
+                }
+   
             }
 
+            return j ;
+        }
+
+        class Program
+        {
+            static void Main(string[] args)
+            {
+
+                EulerAlgorithims algorithim = new EulerAlgorithims();
+
+                //ListNode<int> l1Node3 = new ListNode<int>(4);
+                //ListNode<int> l1Node2 = new ListNode<int>(2);
+                //l1Node2.next = l1Node3;
+                //ListNode<int> l1Node1 = new ListNode<int>(0);
+                //l1Node1.next = l1Node2;
+
+                //ListNode<int> l2Node3 = new ListNode<int>(4);
+                //ListNode<int> l2Node2 = new ListNode<int>(3);
+                //l2Node2.next = l2Node3;
+                //ListNode<int> l2Node1 = new ListNode<int>(1);
+                //l2Node1.next = l2Node2;
+
+                //algorithim.MergeTwoLists(null, null);
+
+                int[] arr = { 0,1,2,2,3,0,4,2 };
+                Console.WriteLine(algorithim.RemoveElement(arr, 2));
+
+                //Console.WriteLine(algorithim.RemoveDuplicates(arr));
+            }
         }
     }
 }
